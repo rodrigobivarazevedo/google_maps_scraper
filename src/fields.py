@@ -75,6 +75,7 @@ DEFAULT_FIELDS_WITHOUT_SOCIAL_DATA = [
     Fields.CLOSED_ON, 
     Fields.PHONE, 
     Fields.ADDRESS, 
+    Fields.COORDINATES,
     Fields.REVIEW_KEYWORDS,
     Fields.LINK, 
 ]
@@ -120,7 +121,8 @@ DEFAULT_FIELDS = [
     Fields.WORKDAY_TIMING, 
     Fields.CLOSED_ON, 
     Fields.PHONE, 
-    Fields.ADDRESS, 
+    Fields.ADDRESS,
+    Fields.COORDINATES,
     Fields.REVIEW_KEYWORDS,
     Fields.LINK, 
 ]

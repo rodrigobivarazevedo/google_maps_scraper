@@ -1,10 +1,20 @@
 from src.gmaps import Gmaps
+import pandas as pd
+from tasks.data_pipeline.geo_cleaner import GeoCleaner
+from tasks.data_pipeline.database.load_db import insert_data_from_csv
 
-star_it = '''Help us reach 850 stars, and we'll break the GMaps 120 limit, giving you 150+ to 250+ potential customers per search.
-             Star us to make it happen ⭐! https://github.com/omkarcloud/google-maps-scraper/'''
+cleaner = GeoCleaner()
 
-queries = [
-   "web developers in bangalore"
-]
 
-Gmaps.places(queries, max=5)
+df = pd.read_csv('tasks/data_pipeline/queries/farm_queries_france.csv')
+
+# Generate queries dynamically from DataFrame to list format for web scraping
+queries = []
+for _, row in df.iterrows():
+    query = f"{row['query']}"
+    queries.append(query)
+
+
+Gmaps.places(queries)
+cleaner.clean("output/all/csv/places-of-all.csv")
+insert_data_from_csv("output/all/csv/places-of-all_cleaned.csv")
