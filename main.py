@@ -6,7 +6,7 @@ from tasks.data_pipeline.database.load_db import insert_data_from_csv
 cleaner = GeoCleaner()
 
 
-df = pd.read_csv('tasks/data_pipeline/queries/farm_queries_france.csv')
+df = pd.read_csv('tasks/data_pipeline/queries/farm_queries_DEU.csv')
 
 # Generate queries dynamically from DataFrame to list format for web scraping
 queries = []
@@ -16,5 +16,5 @@ for _, row in df.iterrows():
 
 
 Gmaps.places(queries)
-cleaner.clean("output/all/csv/places-of-all.csv")
-insert_data_from_csv("output/all/csv/places-of-all_cleaned.csv")
+#cleaner.clean("output/all/csv/places-of-all.csv")
+#insert_data_from_csv("output/all/csv/places-of-all_cleaned.csv")
